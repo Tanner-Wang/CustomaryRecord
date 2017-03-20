@@ -16,8 +16,9 @@ public final class CustomaryContract {
         public static final String TABLE_NAME = "customary record";
         public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_ACTIVITY = "activity";
-        public static final String COLUMN_STARTTIME = "start time(hour)";
-        public static final String COLUMN_EDNTIME = "end time(hour)";
+        public static final String COLUMN_DAY_OF_MONTH = "day of month";
+        public static final String COLUMN_START_TIME = "start time(1-24)";
+        public static final String COLUMN_EDN_TIME = "end time(1-24)";
     }
 
     public static final String TEXT_TYPE = " TEXT";
@@ -26,8 +27,9 @@ public final class CustomaryContract {
     public static final String CREATE_TABLE = "CREATE TABLE " + Entry.TABLE_NAME + "(" +
             Entry._ID + INTEGER_TYPE + COMMA_SEP +
             Entry.COLUMN_ACTIVITY + TEXT_TYPE + COMMA_SEP +
-            Entry.COLUMN_STARTTIME + INTEGER_TYPE + COMMA_SEP +
-            Entry.COLUMN_EDNTIME + INTEGER_TYPE + ")";
+            Entry.COLUMN_DAY_OF_MONTH+INTEGER_TYPE+COMMA_SEP+
+            Entry.COLUMN_START_TIME + INTEGER_TYPE + COMMA_SEP +
+            Entry.COLUMN_EDN_TIME + INTEGER_TYPE + ")";
 
 
     public static final String DELETE_TABLE = "DROP TABLE IF EXIST " + Entry.TABLE_NAME;

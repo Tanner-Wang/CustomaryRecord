@@ -25,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      *Method of insert record
      */
-    private long insertCustomary(String activity, int startTime, int endTime) {
+    private long insertCustomary(String activity, int dayOfMonth, int startTime, int endTime) {
 
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Entry.COLUMN_ACTIVITY, activity);
-        values.put(Entry.COLUMN_STARTTIME, startTime);
-        values.put(Entry.COLUMN_EDNTIME, endTime);
+        values.put(Entry.COLUMN_DAY_OF_MONTH,dayOfMonth);
+        values.put(Entry.COLUMN_START_TIME, startTime);
+        values.put(Entry.COLUMN_EDN_TIME, endTime);
 
         return db.insert(Entry.TABLE_NAME, null, values);
     }
@@ -45,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         String[] projection = {
                 Entry._ID,
                 Entry.COLUMN_ACTIVITY,
-                Entry.COLUMN_STARTTIME,
-                Entry.COLUMN_EDNTIME
+                Entry.COLUMN_DAY_OF_MONTH,
+                Entry.COLUMN_START_TIME,
+                Entry.COLUMN_EDN_TIME
         };
         Cursor cursor = db.query(
                 Entry.TABLE_NAME,
@@ -64,13 +66,14 @@ public class MainActivity extends AppCompatActivity {
      *
      *Suppose to update the time of the activity "Walk the dog"
      */
-    private void upDateRecord(String activity, int startTime, int endTime) {
+    private void upDateRecord(String activity, int dayOfMonth, int startTime, int endTime) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(Entry.COLUMN_ACTIVITY, activity);
-        values.put(Entry.COLUMN_STARTTIME, startTime);
-        values.put(Entry.COLUMN_EDNTIME, endTime);
+        values.put(Entry.COLUMN_DAY_OF_MONTH,dayOfMonth);
+        values.put(Entry.COLUMN_START_TIME, startTime);
+        values.put(Entry.COLUMN_EDN_TIME, endTime);
 
         String selection = Entry.COLUMN_ACTIVITY + " =?";
         String[] selectionArgs = {"Walk the dog."};
